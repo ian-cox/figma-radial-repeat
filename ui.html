@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://static.figma.com/api/figma-extension-api-0.0.1.css">
+
+<p>Roation <input type="text" id="textbox" value="30"></p>
+
+<b id="errors"></b>
+
+<p><button>Rotate</button></p>
+
+<script>
+  document.querySelector('button').onclick = () => {
+    const text = document.querySelector('#textbox').value
+
+    let rotation = text
+
+    if (isNaN(rotation)) {
+      showError('Error: All values must be numbers');
+      return
+    }
+
+    parent.postMessage({ pluginMessage: rotation }, '*')
+  }
+
+  showError = errorMessage => {
+    document.querySelector('#errors').textContent = errorMessage
+  }
+</script>
